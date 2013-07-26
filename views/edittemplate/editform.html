@@ -1,0 +1,43 @@
+﻿<% for(var member in model) { %>
+    <% var field=model[member];
+       if(!field){
+        continue;
+       }
+    %>
+ <div class="control-group">
+     <label class="control-label" for="<%=field.name%>"><%=field.display%></label>
+       <div class="controls">
+      <%if(field.datatype){%>
+      <%}else{%>
+        <input class="text-box single-line" type="<%=field.type%>" name="<%=field.name%>" id="<%=field.name%>"
+            <%if(field.require){%>
+                data-val="true"
+                data-val-required="<%=field.require%>"
+            <%}%>
+           <%if(field.regularExpression){%>
+                data-val-regex-pattern="<%=field.regularExpression.regx%>"
+                data-val-regex="<%=field.regularExpression.message%>"
+             <%}%>
+            <% if(field.length){%>
+                data-val-stringchecklength-minlength="<%=field.length.range[0]%>"
+                data-val-stringchecklength-maxlength="<%=field.length.range[1]%>"
+                data-val-stringchecklength="<%=field.length.message%>"
+             <%}%>
+             <%if(field.remote){%>
+                data-val-remote-url="<%=field.remote.url%>"
+                data-val-remote="<%=field.remote.message%>"
+                data-val-remote-additionalfields="*.<%=field.name%>"
+             <%}%>
+             <%if(field.equalto){%>
+                data-val-equalto-other="<%=field.equalto.id%>"
+                data-val-equalto="<%=field.equalto.message%>"
+             <%}%>
+            />
+           <span class="field-validation-valid" data-valmsg-for="<%=field.name%>" data-valmsg-replace="true"></span>
+           <%if(field.hintlabel){%>
+           <p class="field-hint-message help-block"><%=field.hintlabel%></p>
+            <% } %>
+         <% } %>
+     </div>
+ </div>
+<% } %>
