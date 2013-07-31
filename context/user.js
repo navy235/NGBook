@@ -86,7 +86,7 @@ exports.getUsersByIds = function (ids, callback) {
  * @param {Function} callback »Øµ÷º¯Êý
  */
 exports.getUsersByQuery = function (query, opt, callback) {
-  User.find(query, [], opt, callback);
+  User.find(query, opt, callback);
 };
 
 /**

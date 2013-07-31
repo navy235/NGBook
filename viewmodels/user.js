@@ -1,4 +1,7 @@
-﻿var model = {
+﻿
+var model = {};
+
+model.userRegisterModel = {
   username: {
     name: 'username',
     display: '用户名',
@@ -28,7 +31,7 @@
       message: '邮箱地址长度位于6~24位之间'
     },
     regularExpression: {
-      regx: '^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+$',
+      regx: '^[0-9a-z_][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}\.){1,4}[a-z]{2,4}$',
       message: '输入的电子邮箱格式不正确.'
     }
     //remote: {
@@ -61,4 +64,36 @@
     },
   }
 };
+
+model.userLoginModel = {
+  email: {
+    name: 'email',
+    display: '电子邮箱',
+    type: 'text',
+    require: '请输入电子邮箱',
+    length: {
+      range: [6, 24],
+      message: '邮箱地址长度位于6~24位之间'
+    },
+    regularExpression: {
+      regx: '^[0-9a-z_][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}\.){1,4}[a-z]{2,4}$',
+      message: '输入的电子邮箱格式不正确.'
+    }
+    //remote: {
+    //  url: 'ajax/check_user_email',
+    //  message: '该邮箱已经被注册'
+    //}
+  },
+  password: {
+    name: 'password',
+    display: '密码',
+    type: 'password',
+    require: '请输入密码',
+    length: {
+      range: [6, 24],
+      message: '密码长度位于6~24位之间'
+    },
+  },
+};
+
 exports.model = model;

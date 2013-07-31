@@ -21,4 +21,10 @@ module.exports = function (app) {
 
   app.post('/reg', userContriller.reg_post);
 
+  app.get('/login', userContriller.login);
+
+  app.post('/login', userContriller.login_post);
+
+  app.get('/active_account', userContriller.active_account);
+
 };

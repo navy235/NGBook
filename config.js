@@ -93,11 +93,11 @@ exports.config = {
 
   // mail SMTP
   mail_opts: {
-    host: 'smtp.126.com',
+    host: 'smtp.163.com',
     port: 25,
     auth: {
-      user: 'club@126.com',
-      pass: 'club'
+      user: 'wangyufan025@163.com',
+      pass: 'shj870512'
     }
   },
 
