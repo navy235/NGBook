@@ -1,0 +1,12 @@
+﻿<div class="form-field-controls">
+    <textarea name="<%=field.name%>" id="<%=field.name%>" class="text-box k-textbox multi-line" style="width:700px;height:300px;"
+     <% include validator.html %>
+    ><%if(field.value){%>value="<%=field.value%>"<%}%></textarea>
+     <% include hint.html %>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#<%=field.name%>").kendoEditor();
+    });
+</script>

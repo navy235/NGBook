@@ -9,22 +9,36 @@
  */
 
 var controllers = require('./controllers'),
-    homeContriller = controllers.Home,
-    userContriller = controllers.User
+    homeController = controllers.Home,
+    userController = controllers.User,
+    teamController = controllers.Team,
+    ajaxServicesController = controllers.AjaxServices;
 
 
 module.exports = function (app) {
   // home page
-  app.get('/', homeContriller.home);
+  app.get('/', homeController.home);
 
-  app.get('/reg', userContriller.reg);
+  app.get('/reg', userController.reg);
 
-  app.post('/reg', userContriller.reg_post);
+  app.post('/reg', userController.reg_post);
 
-  app.get('/login', userContriller.login);
+  app.get('/login', userController.login);
 
-  app.post('/login', userContriller.login_post);
+  app.post('/login', userController.login_post);
 
-  app.get('/active_account', userContriller.active_account);
+  app.get('/active_account', userController.active_account);
+
+  app.get('/showteam/:tid', teamController.index);
+
+  app.get('/team/create', teamController.create);
+
+  app.get('/team/list', teamController.list);
+
+  app.post('/team/create', teamController.create_post);
+
+  app.post('/ajaxservices/upload', ajaxServicesController.upload);
+
+  app.post('/ajaxservices/remove', ajaxServicesController.remove);
 
 };

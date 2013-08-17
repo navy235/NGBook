@@ -20,6 +20,7 @@ exports.config = {
     // [ path, title, [target=''] ]
     ['/about', '关于'],
   ],
+  upload_maxlength: 10240000,
   site_static_host: '', // 静态文件存储域名
   mini_assets: false, // 静态文件的合并压缩，详见视图中的Loader
   site_enable_search_preview: false, // 开启google search preview

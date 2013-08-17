@@ -1,0 +1,27 @@
+﻿ <div class="form-field-controls">
+    <div class="img-box">
+        <img src="/images/noimages.gif" id="<%=field.name%>_img" />
+    </div>
+
+     <input type="file" id="attachments" name="attachments" />
+     <input type="text" name="<%=field.name%>" id="<%=field.name%>" class="text-file k-valid-text"   <%if(field.value){%>value="<%=field.value%>"<%}%>
+      <% include validator.html %>
+    />
+    <% include hint.html %> 
+ </div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        var upvalue;
+        <%if(field.value){%>
+            upvalue="<%=field.value%>";
+        <%}%>
+        jQuery("#<%=field.name%>").maitonnUplpad({
+            default_url: '/images/noimages.gif',
+            save_url: '/ajaxservices/upload',
+            uploadId: 'attachments',
+            remove_url: '/ajaxservices/remove',
+            value:upvalue
+        })
+    });
+</script>

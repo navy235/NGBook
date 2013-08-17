@@ -4,40 +4,17 @@
         continue;
        }
     %>
- <div class="control-group">
-     <label class="control-label" for="<%=field.name%>"><%=field.display%></label>
-       <div class="controls">
-      <%if(field.datatype){%>
-      <%}else{%>
-        <input class="text-box single-line" type="<%=field.type%>" name="<%=field.name%>" id="<%=field.name%>"
-            <%if(field.require){%>
-                data-val="true"
-                data-val-required="<%=field.require%>"
-            <%}%>
-           <%if(field.regularExpression){%>
-                data-val-regex-pattern="<%=field.regularExpression.regx%>"
-                data-val-regex="<%=field.regularExpression.message%>"
-             <%}%>
-            <% if(field.length){%>
-                data-val-stringchecklength-minlength="<%=field.length.range[0]%>"
-                data-val-stringchecklength-maxlength="<%=field.length.range[1]%>"
-                data-val-stringchecklength="<%=field.length.message%>"
-             <%}%>
-             <%if(field.remote){%>
-                data-val-remote-url="<%=field.remote.url%>"
-                data-val-remote="<%=field.remote.message%>"
-                data-val-remote-additionalfields="*.<%=field.name%>"
-             <%}%>
-             <%if(field.equalto){%>
-                data-val-equalto-other="<%=field.equalto.id%>"
-                data-val-equalto="<%=field.equalto.message%>"
-             <%}%>
-            />
-           <span class="field-validation-valid" data-valmsg-for="<%=field.name%>" data-valmsg-replace="true"></span>
-           <%if(field.hintlabel){%>
-           <p class="field-hint-message help-block"><%=field.hintlabel%></p>
+ <div class="form-field <%if(field.class){%><%=field.class%><%}%>">
+     <label class="form-field-label <%if(field.require){%>form-field-lable-required<%}%>" for="<%=field.name%>"><%=field.display%></label>
+         <%if(field.datatype){%>
+            <%if(field.datatype=='richtext'){%>
+                <% include richtext.html %>
             <% } %>
+            <%if(field.datatype=='upload'){%>
+                <% include upload.html %>
+            <% } %>
+         <%}else{%>
+            <% include input.html %>
          <% } %>
-     </div>
  </div>
 <% } %>

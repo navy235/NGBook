@@ -12,8 +12,12 @@ exports.getModels = function (req, viewmodels) {
   for (var m in viewmodels) {
     var rule = viewmodels[m],
         input = req.body[m];
-    model[m] = sanitize(req.body[m]).trim();
-    model[m] = sanitize(model[m]).xss();
+    if (rule.datatype !== 'richtext') {
+      model[m] = sanitize(req.body[m]).trim();
+      model[m] = sanitize(model[m]).xss();
+    } else {
+      model[m] = req.body[m];
+    }
     if (rule) {
       if (rule.require) {
         if (input === '') {
@@ -27,7 +31,16 @@ exports.getModels = function (req, viewmodels) {
         }
       }
       if (rule.length) {
-        if (input.length < rule.length.range[0] || input.length > rule.length.range[1]) {
+        var stringlength = 0;
+        var strArray = input.split('');
+        for (var i = 0; i < strArray.length; i++) {
+          if (strArray[i].charCodeAt(0) < 299) {
+            stringlength++;
+          } else {
+            stringlength += 2;
+          }
+        }
+        if (stringlength < rule.length.range[0] || stringlength > rule.length.range[1]) {
           error.push(rule.length.message);
         }
       }

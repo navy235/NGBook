@@ -2,35 +2,34 @@
 <html>
 <head>
     <title><%= title %> - Microblog</title>
-    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
+        ﻿body {
+            font-size: 12px;
+            font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+            color: #232323;
+            background-color: #fff;
         }
     </style>
-    <link href="stylesheets/bootstrap-responsive.css" rel="stylesheet" />
+
+    <link rel='stylesheet' href='/stylesheets/site.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/kendo/2012.3.1114/kendo.common.min.css' />
+    <link rel='stylesheet' href="/stylesheets/kendo/2012.3.1114/kendo.default.min.css" />
+    <link rel='stylesheet' href='/stylesheets/kendohelper.css' />
+    <script type="text/javascript" src="/javascripts/modernizr-2.5.3.js"></script>
+    <script src="/javascripts/kendo/2012.3.1114/jquery.min.js"></script>
+    <script src="/javascripts/kendo/2012.3.1114/kendo.all.min.js"></script>
+    <script src="/javascripts/puligns/ulti-upload.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/">Microblog</a>
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="/">首页</a></li>
-                        <li><a href="/login">登入</a></li>
-                        <li><a href="/reg">注册</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <ul class="nav">
+        <li class="active"><a href="/">首页</a></li>
+        <li><a href="/login">登入</a></li>
+        <li><a href="/reg">注册</a></li>
+        <li><a href="/team/create">添加战队</a></li>
+    </ul>
+
     <div id="container" class="container">
         <% if (success) { %>
         <div class="alert alert-success">
@@ -43,13 +42,7 @@
         </div>
         <% } %>
         <%- body %>
-        <hr />
-        <footer>
-            <p><a href="http://www.byvoid.com/" target="_blank">BYVoid</a> 2012</p>
-        </footer>
     </div>
-    <script src="/javascripts/jquery-1.7.1.min.js"></script>
-    <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/jquery.validate.js"></script>
     <script src="/javascripts/jquery.validate.unobtrusive.js"></script>
     <script src="/javascripts/jquery.validate.unobtrusive.zcustom.js"></script>

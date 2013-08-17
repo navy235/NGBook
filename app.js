@@ -6,8 +6,10 @@
 var express = require('express')
   , http = require('http')
   , expressLayouts = require('express-ejs-layouts')
-  , expressValidator = require('express-validator')
+  , ejsshrink = require('ejs-shrink')
   , flash = require('connect-flash')
+  , config = require('./config')
+  , ent = require('ent')
   , routes = require('./routes')
   , path = require('path');
 
@@ -22,7 +24,6 @@ app.use(expressLayouts)
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
-app.use(expressValidator());
 app.use(express.methodOverride());
 
 app.configure(function () {
@@ -43,6 +44,9 @@ app.use(function (req, res, next) {
   var success = req.flash('success');
   res.locals.success = success.length ? success : null;
   res.locals.user = req.session ? req.session.user : null;
+  res.locals.decode = function (str) {
+    return ent.decode(str);
+  }
   next();
 });
 

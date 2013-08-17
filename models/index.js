@@ -12,5 +12,8 @@ mongoose.connect(config.db, function (err) {
 // models
 
 require('./user');
-
+require('./team');
+require('./sportsman');
 exports.User = mongoose.model('User');
+exports.Team = mongoose.model('Team');
+exports.SportsMan = mongoose.model('SportsMan');

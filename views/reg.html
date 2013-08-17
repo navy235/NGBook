@@ -1,12 +1,29 @@
-﻿<form class="form-horizontal" method="post">
-    <fieldset>
-        <legend>用户注册</legend>
+﻿<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#listattachments")
+            .kendoUpload({
+                "error": MediaImg.onError,
+                "success": MediaImg.onSuccess,
+                "upload": MediaImg.onUpload,
+                "select": MediaImg.onSelect,
+                "localization":
+                    {
+                        "cancel": "取消",
+                        "dropFilesHere": "拖拽要上传文件到此处",
+                        "remove": "移除",
+                        "retry": "重试",
+                        "select": "选择...",
+                        "statusFailed": "失败",
+                        "statusUploaded": "已上传",
+                        "statusUploading": "上传中",
+                        "uploadSelectedFiles": "上传文件"
+                    },
+                "async": {
+                    "saveUrl": "/AjaxService/UploadListSave",
+                    "autoUpload": true,
+                    "removeUrl": "/AjaxService/UpLoadRemove"
+                }
+            });
+    });
 
-        <% include edittemplate/editform.html %>
-
-       
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">注册</button>
-        </div>
-    </fieldset>
-</form>
+</script>

@@ -1,0 +1,21 @@
+﻿<table>
+    <tr>
+        <th>战队名称</th>
+        <th>战队Logo</th>
+        <th>操作</th>
+    </tr>
+
+    <% for(var i=0;i < teams.length ; i++){%>
+      <tr>
+          <td><%=teams[i].name%>
+          </td>
+          <td>
+              <img src="<%=teams[i].logo_url%>" width="60" height="60" />
+          </td>
+          <td>
+              <a href="/team/edit/<%=teams[i]._id%>">编辑</a>
+          </td>
+      </tr>
+    <%}%>
+
+</table>
